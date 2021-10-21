@@ -1,27 +1,10 @@
-#!/usr/bin/python
-# encoding:utf-8
-__author__ = 'irmo'
 import json
-
-
-def import_rules():
-    rule_file = 'rules/rules.json'
-    with open(rule_file, 'r') as f:
-        rules = json.load(f)
-        return rules
-
+from db import db
 
 def import_facts():
     facts = {'Freeway', 'Three lanes',
              'Middle lane', 'Safety distance 100 meters'}
     return facts
-
-
-def import_cases():
-    cases_file = 'cases/tests.json'
-    with open(cases_file, 'r') as f:
-        cases = json.load(f)
-        return cases
 
 
 def match_rule(facts, rule):
@@ -43,10 +26,8 @@ def test_one_case(rules, facts):
             print('Match rule: ' + str(rule['IF']) + str(rule['THEN']))
             conclusions = rule['THEN']
             if 'Max' in conclusions.keys():
-                # print('Max ' + str(conclusions['Max']))
                 Max = min(Max, conclusions['Max'])
             if 'Min' in conclusions.keys():
-                # print('Min ' + str(conclusions['Min']))
                 Min = max(Min, conclusions['Min'])
             if Max <= Min:
                 Min = 0
@@ -55,11 +36,11 @@ def test_one_case(rules, facts):
     return Max, Min, Advice
 
 if __name__ == "__main__":
-    rules = import_rules()
+    rules = db.get_rules()
     facts = import_facts()
     test_one_case(rules, facts)
 
-    cases = import_cases()
+    cases = db.get_cases()
     for case in cases:
         facts = case['Facts']
         conclusion = case['Conclusion']
@@ -68,5 +49,4 @@ if __name__ == "__main__":
         print('Min speed: ' + str(Min))
         if len(Advice) > 0:
             print('Advice: ' + str(Advice))
-        # print(conclusion)
         print()

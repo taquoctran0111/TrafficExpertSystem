@@ -1,5 +1,6 @@
 import PySimpleGUI as sg
 import main as expert
+from db import db
 
 frame = [
     [sg.Text("Tốc độ tối đa: ", size=(12,1)), sg.Text(" ",size=(582,1), key="max_output", text_color="black")], 
@@ -31,8 +32,6 @@ while True:
 
         if values["safety"]:
             facts.append("Safety distance 100 meters")
-        # if values["1lane"]:
-        #     facts.append("One lane")
         if values["2lane"]:
             facts.append("Two lanes")
         if values["3lane"]:
@@ -43,8 +42,6 @@ while True:
             facts.append("Middle lane")
         if values["lane-r"]:
             facts.append("Right lane")
-        # if values["without"]:
-        #     facts.append("Without")
         if values["200m"]:
             facts.append("200m")
         if values["100m"]:
@@ -61,7 +58,7 @@ while True:
 
     if event == "Tư vấn":
         facts = get_facts()
-        rules = expert.import_rules()
+        rules = db.get_rules()
         Max, Min, Advice = expert.test_one_case(rules, facts)
         window['max_output'].update(str(Max)+"km/h")
         window['min_output'].update(str(Min)+"km/h")
