@@ -35,37 +35,37 @@
         }
     },
     {
-        "Facts": ["Freeway", "Visibility 100 meters"],
+        "Facts": ["Freeway", "100m"],
         "Conclusion":{
             "Max": 40
         }
     },
     {
-        "Facts": ["Freeway", "Visibility 100 meters", "Three lanes", "Right lane"],
+        "Facts": ["Freeway", "100m", "Three lanes", "Right lane"],
         "Conclusion": {
             "Max": 40
         }
     },
     {
-        "Facts": ["Freeway", "Visibility 200 meters", "Two lanes", "Left lane"],
+        "Facts": ["Freeway", "200m", "Two lanes", "Left lane"],
         "Conclusion": {
             "Max": 60
         }
     },
     {
-        "Facts": ["Freeway", "Visibility 50 meters", "Three lanes", "Middle lane", "Safety distance 100 meters"],
+        "Facts": ["Freeway", "50m", "Three lanes", "Middle lane", "Safety distance 100 meters"],
         "Conclusion": {
             "Max": 20
         }
     },
     {
-        "Facts": ["Freeway", "Visibility 100 meters", "Two lanes", "Right lane", "Safety distance 100 meters"],
+        "Facts": ["Freeway", "100m", "Two lanes", "Right lane", "Safety distance 100 meters"],
         "Conclusion": {
             "Max": 40
         }
     },
     {
-        "Facts": ["Freeway", "Three lanes", "Right lane", "Visibility 200 meters"],
+        "Facts": ["Freeway", "Three lanes", "Right lane", "200m"],
         "Conclusion": {
             "Max": 60
         }

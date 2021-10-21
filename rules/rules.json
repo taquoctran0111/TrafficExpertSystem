@@ -1,60 +1,81 @@
 [
-{
-    "IF": ["Freeway"],
-    "THEN": {
-        "Max": 120,
-        "Min": 60
+    {
+        "IF": ["Freeway"],
+        "THEN": {
+            "Max": 120,
+            "Min": 60
+        }
+    },
+    {
+        "IF": ["Freeway", "Safety distance 100 meters"],
+        "THEN": {
+            "Max": 100
+        }
+    },
+    {
+        "IF":["Freeway","Two lanes", "Left lane"],
+        "THEN":{
+            "Min": 100
+        }
+    },
+    {
+        "IF":["Freeway","Three lanes", "Left lane"],
+        "THEN":{
+            "Min": 110
+        }
+    },
+    {
+        "IF":["Freeway","Three lanes", "Middle lane"],
+        "THEN":{
+            "Min": 90
+        }
+    },
+    {
+        "IF":["Freeway","Three lanes", "Right lane"],
+        "THEN":{
+            "Max": 60
+        }
+    },
+    {
+        "IF":["Freeway","200m"],
+        "THEN":{
+            "Max": 60,
+            "Advice": ["Open lights"]
+        }
+    },
+    {
+        "IF":["Freeway","100m"],
+        "THEN":{
+            "Max": 40,
+            "Advice": ["Open lights"]
+        }
+    },
+    {
+        "IF":["Freeway","50m"],
+        "THEN":{
+            "Max": 20,
+            "Advice": ["Open lights","Leave ASAP"]
+        }
+    },
+    {
+        "IF":["Freeway","Slippery"],
+        "THEN":{
+            "Max": 40,
+            "Advice": ["Slippery"]
+        }
+    },
+    {
+        "IF":["Freeway","High pass"],
+        "THEN":{
+            "Max": 40,
+            "Advice": ["High pass"]
+        }
+    },
+    {
+        "IF":["Freeway","High pass", "Slippery"],
+        "THEN":{
+            "Max": 20,
+            "Advice": ["High pass", "Slippery"]
+        }
     }
-}, 
-{
-    "IF": ["Freeway", "Safety distance 100 meters"],
-    "THEN": {
-        "Max": 100
-    }
-}, 
-{
-    "IF": ["Freeway", "Two lanes", "Left lane"],
-    "THEN": {
-        "Min": 100
-    }
-}, 
-{
-    "IF": ["Freeway", "Three lanes", "Left lane"],
-    "THEN": {
-        "Min": 110
-    }
-}, 
-{
-    "IF": ["Freeway", "Three lanes", "Middle lane"],
-    "THEN": {
-        "Min":90
-    }
-}, 
-{
-    "IF": ["Freeway", "Three lanes", "Right lane"],
-    "THEN": {
-        "Min": 60
-    }
-}, 
-{
-    "IF": ["Freeway", "Visibility 200 meters"],
-    "THEN": {
-        "Max": 60,
-        "Advice": ["Open lights"]
-    }
-}, 
-{
-    "IF": ["Freeway", "Visibility 100 meters"],
-    "THEN": {
-        "Max": 40,
-        "Advice": ["Open lights"]
-    }
-}, 
-{
-    "IF": ["Freeway", "Visibility 50 meters"],
-    "THEN": {
-        "Max": 20,
-        "Advice": ["Open lights", "Leave ASAP"]
-    }
-}
 ]
