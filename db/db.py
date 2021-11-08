@@ -23,15 +23,16 @@ def import_cases():
 rules = import_rules()
 cases = import_cases()
 
-# col_rules.insert_many(rules)
-# col_cases.insert_many(cases)
-
 def get_rules():
     rules = []
     rules_rs = col_rules.find()
     for rule in rules_rs:
         rules.append(rule)
     return rules
+
+def get_one_rule(name_rule):
+    rule = col_rules.find_one({"IF": name_rule})
+    return rule
     
 def get_cases():
     cases = []
@@ -39,3 +40,24 @@ def get_cases():
     for case in cases_rs:
         cases.append(case)
     return cases
+
+def json_data(rule,max_sp,min_sp, advice):
+    data = {
+        'IF': rule,
+        'THEN': {'Max': max_sp, 'Min': min_sp, 'Advice': advice}
+    }
+    return data
+
+def add_rule(data):
+    col_rules.insert_one(data)
+
+def delete_rule(name_rule):
+    col_rules.delete_one({"IF": name_rule})
+
+def update_rule(name_rule, max_sp, min_sp, advice):
+    col_rules.update_one(
+        {"IF": name_rule},
+        {
+            "$set": {"THEN.Max": max_sp, "THEN.Min": min_sp, "THEN.Advice": advice}
+        }
+    )
